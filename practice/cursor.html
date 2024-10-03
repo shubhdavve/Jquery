@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  cursor: none;
+}
+
+body {
+  background: #1f2028;
+}
+
+#container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#dot,
+#ball {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+#dot {
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  z-index: 10;
+}
+
+#ball {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #fff;
+  background: transparent;
+  z-index: 5;
+}
+
+.rolling-text {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  line-height: 20px;
+  display: block;
+  text-align: center;
+  font-size: 20px;
+  letter-spacing: 5px;
+  color: #fff;
+  transform: translateY(0);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+}
+
+.rolling-text::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0.0938rem;
+  bottom: -5px;
+  left: 0;
+  background: linear-gradient(to left, #e0e0e0, #f0f0f0, #ffffff);
+  transition: width 0.4s ease;
+}
+
+.rolling-text:hover::after {
+  width: 96%;
+}
+
+.rolling-text div {
+  display: flex;
+  overflow: hidden;
+  text-shadow: 0 20px 0 #fff;
+}
+
+.rolling-text div span {
+  display: block;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  font-style: normal;
+  transition: transform 0.4s ease;
+  transform: translateY(0);
+}
+
+.rolling-text div span:nth-child(1) {
+  transition-delay: 0.05s;
+}
+
+.rolling-text div span:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.rolling-text div span:nth-child(3) {
+  transition-delay: 0.15s;
+}
+
+.rolling-text div span:nth-child(4) {
+  transition-delay: 0.2s;
+}
+
+.rolling-text div span:nth-child(5) {
+  transition-delay: 0.25s;
+}
+
+.rolling-text div span:nth-child(6) {
+  transition-delay: 0.3s;
+}
+
+.rolling-text div span:nth-child(7) {
+  transition-delay: 0.35s;
+}
+
+.rolling-text div span:nth-child(8) {
+  transition-delay: 0.4s;
+}
+
+.rolling-text div span:nth-child(9) {
+  transition-delay: 0.45s;
+}
+
+.rolling-text div span:nth-child(10) {
+  transition-delay: 0.5s;
+}
+
+.rolling-text div span:nth-child(11) {
+  transition-delay: 0.55s;
+}
+
+.rolling-text div span:nth-child(12) {
+  transition-delay: 0.6s;
+}
+
+.rolling-text div span:nth-child(13) {
+  transition-delay: 0.65s;
+}
+
+.rolling-text div span:nth-child(14) {
+  transition-delay: 0.7s;
+}
+
+.rolling-text div span:nth-child(15) {
+  transition-delay: 0.75s;
+}
+
+.rolling-text div span:nth-child(16) {
+  transition-delay: 0.8s;
+}
+
+.rolling-text div span:nth-child(17) {
+  transition-delay: 0.85s;
+}
+
+.rolling-text div span:nth-child(18) {
+  transition-delay: 0.9s;
+}
+
+.rolling-text div span:nth-child(19) {
+  transition-delay: 0.95s;
+}
+
+.rolling-text div span:nth-child(20) {
+  transition-delay: 1s;
+}
+
+.rolling-text:hover span {
+  transform: translateY(-20px);
+}
+
+.rolling-text:hover ~ #dot,
+.rolling-text:hover ~ #ball {
+  opacity: 0;
+}
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <a href="#" class="rolling-text">
+          <div>
+            <span>H</span>
+            <span>O</span>
+            <span>V</span>
+            <span>E</span>
+            <span>R</span>
+          </div>
+        </a>
+        <div id="dot"></div>
+        <div id="ball"></div>
+      </div>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+
+<script>// Mouse konumunu ve dot/ball pozisyonlarını tutan değişkenler
+    var mouse = {
+      x: window.innerWidth / 2,
+      y: window.innerHeight / 2
+    }; // Başlangıçta mouse pozisyonunu merkeze al
+    var dotPos = {
+      x: window.innerWidth / 2,
+      y: window.innerHeight / 2
+    }; // Dot başlangıç pozisyonu
+    var ballPos = {
+      x: window.innerWidth / 2,
+      y: window.innerHeight / 2
+    }; // Ball başlangıç pozisyonu
+    
+    // Hız ayarı için değişken
+    var speed = 1; // 1 ile 10 arasında bir değer ile hız ayarı yapabilirsiniz
+    
+    // Dot ve ball elementlerinin hareket oranlarını belirleyen değişkenler
+    var dotRatio = 0.2 * speed;
+    var ballRatio = 0.1 * speed;
+    
+    // DOM'dan dot ve ball elementlerini seç
+    var dot = document.getElementById("dot");
+    var ball = document.getElementById("ball");
+    
+    // Dot ve ball elementlerini başlangıçta ortala
+    gsap.set(dot, {
+      xPercent: -50,
+      yPercent: -50
+    });
+    gsap.set(ball, {
+      xPercent: -50,
+      yPercent: -50
+    });
+    
+    // Fare hareketini algılayan fonksiyon
+    document.addEventListener("mousemove", (e) => {
+      // Mouse konumunu güncelle
+      mouse.x = e.pageX;
+      mouse.y = e.pageY;
+    });
+    
+    // GSAP ticker ile her frame'de dot ve ball pozisyonlarını güncelle
+    gsap.ticker.add(() => {
+      // Dot elementinin pozisyonunu yumuşak bir şekilde güncelle
+      dotPos.x += (mouse.x - dotPos.x) * dotRatio;
+      dotPos.y += (mouse.y - dotPos.y) * dotRatio;
+    
+      gsap.set(dot, {
+        x: dotPos.x,
+        y: dotPos.y
+      });
+    
+      // Ball elementinin dot'u yumuşak bir şekilde takip etmesini sağla
+      ballPos.x += (dotPos.x - ballPos.x) * ballRatio;
+      ballPos.y += (dotPos.y - ballPos.y) * ballRatio;
+      gsap.set(ball, {
+        x: ballPos.x,
+        y: ballPos.y
+      });
+    });
+    </script>
+
+</body>
+</html>

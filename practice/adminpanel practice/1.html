@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive dropdown menu - Bedimcode</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <link rel="stylesheet" href="01.css">   
+   <link rel="stylesheet" id="bshk-googleFonts-css" href="https://fonts.googleapis.com/css?family=Josefin+Sans%7CLato&amp;ver=4.9.8" type="text/css" media="all">
+   
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container">
+      <div class="nav__data">
+        <a href="#" class="nav__logo">
+          <i class="ri-bank-line"></i>Bank
+        </a>
+        
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="ri-menu-line nav__burger"></i>
+          <i class="ri-close-line nav__close"></i>
+        </div>
+      </div>
+      
+      <!-- NAV MENU -->
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li><a href="#" class="nav__link">Home</a></li>
+          <li><a href="#" class="nav__link">Company</a></li>
+          
+          <!-- DROPDOWN 1 -->
+          <li class="dropdown__item">
+            <div class="nav__link">
+              Analytics <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+            </div>
+            
+            <!-- DROPDOWN MENU -->
+            <ul class="dropdown__menu">
+              <li>
+                <a href="#" class="dropdown__link">
+                  <i class="ri-pie-chart-line"></i> Overview
+                </a>
+              </li>
+              <li>
+                <a href="#" class="dropdown__link">
+                  <i class="ri-arrow-up-down-line"></i> Transactions
+                </a>
+              </li>
+              
+              <!-- DROPDOWN SUBMENU -->
+              <li class="dropdown__subitem">
+                <div href="#" class="dropdown__link">
+                  <i class="ri-bar-chart-box-line"></i> Reports <i class="ri-add-line dropdown__add"></i>
+                </div>
+                
+                <ul class="dropdown__submenu">
+                  <li>
+                    <a href="#" class="dropdown__sublink">
+                      <i class="ri-file-list-line"></i> Documents
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="dropdown__sublink">
+                      <i class="ri-cash-line"></i> Payments
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="dropdown__sublink">
+                      <i class="ri-refund-2-line"></i> Refunds
+                    </a>
+                  </li>
+                </ul>
+                
+              </li>
+            </ul>
+          </li>
+          
+          <!-- DROPDOWN 2 -->
+          <li class="dropdown__item">
+            <div href="#" class="nav__link"> 
+              User <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+            </div>
+            
+            <!-- DROPDOWN MENU -->
+            <ul class="dropdown__menu">
+              <li>
+                <a href="#" class="dropdown__link">
+                  <i class="ri-user-line"></i> Profiles
+                </a>
+              </li>
+              <li>
+                <a href="#" class="dropdown__link">
+                  <i class="ri-lock-line"></i> Accounts
+                </a>
+              </li>
+              <li>
+                <a href="#" class="dropdown__link">
+                  <i class="ri-message-3-line"></i> Message
+                </a>
+              </li>
+            </ul>
+          </li>
+          
+          <li><a href="#" class="nav__link">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+<div class="hamburger-menu">
+  <ion-icon name="menu-outline" id="hamburger-icon"></ion-icon>
+</div>
+<div class="sidebar" id="sidebars">
+  <div class="close-icon" id="close" onclick="closeNav() ">
+    <ion-icon name="close-outline"></ion-icon>
+  </div>
+
+  <ul class="links">
+    <li class="link active">
+      <a href="#">
+        <ion-icon name="home-outline" class="icon"></ion-icon>Loan
+      </a>
+    </li>
+    <li class="link">
+      <a href="#">
+        <ion-icon name="analytics-outline" class="icon"></ion-icon>Dashboard
+      </a>
+    </li>
+    <li class="link">
+      <a href="#">
+        <ion-icon name="eye-outline" class="icon"></ion-icon>Overview
+      </a>
+    </li>
+    <li class="link">
+      <a href="#">
+        <ion-icon name="person-outline" class="icon"></ion-icon>About
+      </a>
+    </li>
+    <li class="link">
+      <a href="#">
+        <ion-icon name="mail-outline" class="icon"></ion-icon>Credit score
+      </a>
+    </li>
+    <li class="link">
+      <a href="#">
+        <ion-icon name="key-outline" class="icon"></ion-icon>Account
+      </a>
+    </li>
+    <li class="link">
+      <a href="#">
+        <ion-icon name="settings-outline" class="icon"></ion-icon>Settings
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+
+<div class="searchbar">
+  <input type="text" placeholder="Search...">
+  <button>Search</button>
+</div>
+
+<div class="mainbody">
+
+  <div class="containner">
+ 
+   
+    <div class="counter" data-countto="150" data-duration="8000">0</div> 
+    <div class="counter" data-countto="85" data-duration="20000">0</div>
+    <div class="counter" data-countto="2200" data-duration="2000">0</div>
+  </div>
+
+
+</div>
+
+<div class="apexchart">
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<div class="boxx">
+	<div id="chart"></div>
+</div>
+</div>
+
+
+
+
+
+<div class="piechart">
+<div id="cont">
+  <div class="summdrill">
+    
+    <div class="summary">
+      <div class="stitle"> Cost Summary</div>
+      <div class="summcost ">Cost details for the selected duration</div><br>
+     <!-- <button>Back</button> -->
+     </div>
+    <div class="invoice">
+    <div class="box margleft">
+        <div class="sdesc">Previous Invoice</div>
+        <div class="stitle">12345.00 $</div>
+     </div>
+      <div class="box">
+        <div class="sdesc">Projected Invoice</div>
+        <div class="stitle">12121.00 $</div>
+      </div>
+      <div class="box">
+        <div class="sdesc">Current Invoice</div>
+        <div class="stitle">1145.00 $</div>
+      </div>
+    </div>
+    
+  
+  <hr>
+  <div class="side">
+    <div class ="sidetext shadow shadow1">
+      <div class="stitle">Cost details of the services</div>
+      <div class="sdesc">For duration: Mar 1 to Mar 31, 2020</div>
+      <div class="srvdetails coral">Services 1 <span> 123.00</span></div>
+      <div class="srvdetails teal">Lorem iipsum <span> 23.00</span></div>
+      <div class="srvdetails orange">Dolor amet <span> 102.00</span></div>
+      <div class="srvdetails purple">Services 4 <span> 0.00</span></div>
+      
+    </div>
+    
+    <div class="schart"><div class="schartcont intitle"> <div class="incost">
+      <span>1223.00</span></div>
+      <div> Total</div>
+     </div>
+    </div>
+  </div>
+  
+  <div class="subcharts"><div class="inchartcont ">
+    <div class="stitle ">Cost as per grouping</div>
+    <div class="sdesc2"> Group by environment</div>
+    
+    <div class="inchart  sbx1">
+      <div class="intitle">
+        <div class="incost"><span>273.00</span></div>
+        <div> SBX</div>
+        </div>
+      </div>
+    
+     <div class="inchart sbx2">
+      <div class="intitle">
+        <div class="incost"><span>245.00</span></div>
+        <div> UAT</div>
+      </div>
+     </div>
+    
+     <div class="inchart sbx3">
+      <div class="intitle">
+        <div class="incost"><span>347.00</span></div>
+        <div> STAGE</div>
+      </div>
+     </div>
+    
+     <div class="inchart sbx4">
+      <div class="intitle">
+        <div class="incost"><span>135.00</span></div>
+        <div> Prod</div>
+      </div>
+     </div>
+    
+     <div class="inchart sbx5">
+      <div class="intitle">
+        <div class="incost"><span>103.00</span></div>
+        <div> SBX2</div>
+      </div>
+     </div>
+    
+    </div>
+      
+    </div>
+    
+    
+    
+  </div>
+  </div>
+</div>
+  
+  
+
+<script src="01.js"></script>
+
+</body>
+
+
+
+</html>
+
+
+

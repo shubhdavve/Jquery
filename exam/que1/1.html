@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>accordian que1</title>
+    <style>
+
+.content-container {
+  max-width: 740px;
+  margin: 20px auto;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.eqd-accordion__heading {
+  margin-bottom: 0;
+}
+
+.eqd-accordion__button {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    justify-content: normal;
+    text-align: left;
+    padding: 0;
+    color: #1b1b1b;
+    background-color: #f0f0f0;
+    background-image: url(https://equalizedigital.com/wp-content/uploads/2024/07/minus.svg), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-position: right 1.25rem center;
+    background-size: 1.5rem;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    margin: 0;
+    padding: 1rem 3.5rem 1rem 1.25rem;
+    text-decoration: none;
+    width: 100%;
+}
+
+.eqd-accordion__button[aria-expanded=false], 
+.eqd-accordion__button[aria-expanded=false]:hover {
+    background-image: url(https://equalizedigital.com/wp-content/uploads/2024/07/plus.svg), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+}
+
+.eqd-accordion__button[aria-expanded=false] {
+    background-size: 1.5rem;
+}
+
+.eqd-accordion__content {
+    color: #1b1b1b;
+    background-color: #fff;
+    margin-top: 0;
+    overflow: auto;
+    padding: 1rem 1.25rem calc(1rem - .25rem);
+    font-size: 1.06rem;
+    line-height: 1.5;
+    border-bottom: .25rem solid #f0f0f0;
+    border-left: .25rem solid #f0f0f0;
+    border-right: .25rem solid #f0f0f0;
+}
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="eqd-accordion">
+          <h3 class="eqd-accordion__heading">
+            <button
+              type="button"
+              class="eqd-accordion__button"
+              aria-expanded="true"
+              aria-controls="a1"
+            >
+              Why should accordions be accessible?
+            </button>
+          </h3>
+          <div id="a1" class="eqd-accordion__content">
+            <p>
+              Accordions on your website include important information. Everyone should be able to access this information, even if they do not use a typical keyboard and mouse to browser your website. Many laws around the world also require websites to be accessible, including accordion components.
+            </p>
+          </div>
+          <h3 class="eqd-accordion__heading">
+            <button
+              type="button"
+              class="eqd-accordion__button"
+              aria-expanded="false"
+              aria-controls="a2"
+            >
+              Do accordions need buttons?
+            </button>
+          </h3>
+          <div id="a2" class="eqd-accordion__content" hidden>
+            <p>
+              Yes, HTML buttons are necessary for screen reader and keyboard only users to be able to open and close the accordion.
+            </p>
+          </div>
+          <h3 class="eqd-accordion__heading">
+            <button
+              type="button"
+              class="eqd-accordion__button"
+              aria-expanded="false"
+              aria-controls="a3"
+            >
+              Do accordions need headings?
+            </button>
+          </h3>
+          <div id="a3" class="eqd-accordion__content" hidden>
+            <p>
+              Yes. Headings are very important for screen reader users to be able to understand and quickly navigate the content. All button text should be contained in a heading tag of the appropriate level (H2, H3, H4, etc.) as makes sense in the outline of your page. Adding a button role to a heading removes the heading from the heading list in screen readers, which is an accessibility failure. You need both a heading tag wrapped around a button tag.
+            </p>
+          </div>
+           <h3 class="eqd-accordion__heading">
+            <button
+              type="button"
+              class="eqd-accordion__button"
+              aria-expanded="false"
+              aria-controls="a4"
+            >
+              Can I use the details element instead?
+            </button>
+          </h3>
+          <div id="a4" class="eqd-accordion__content" hidden>
+            <p>
+              No. The HTML details element is only intended for standalone use and not as a grouped element. It does not support the use of headings and thus cannot be used in place of an accordion.
+            </p>
+          </div>
+          <h3 class="eqd-accordion__heading">
+            <button
+              type="button"
+              class="eqd-accordion__button"
+              aria-expanded="false"
+              aria-controls="a5"
+            >
+              Where else can I learn about coding accessible accordions?
+            </button>
+          </h3>
+          <div id="a5" class="eqd-accordion__content" hidden>
+            <p>
+              You can learn more about coding accessible accordions on the Equalize Digital blog, <a href="https://equalizedigital.com/how-to-code-accessible-accordions/">How to Code Accessible Accordions.</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <script>document.addEventListener("DOMContentLoaded", function() {
+        const accordionButtons = document.querySelectorAll(".eqd-accordion__button");
+      
+        accordionButtons.forEach(button => {
+          button.addEventListener("click", function() {
+            const isExpanded = button.getAttribute("aria-expanded") === "true";
+            const contentId = button.getAttribute("aria-controls");
+            const content = document.getElementById(contentId);
+      
+            // Collapse all accordions
+            accordionButtons.forEach(btn => {
+              const contentToHide = document.getElementById(btn.getAttribute("aria-controls"));
+              btn.setAttribute("aria-expanded", "false");
+              if (contentToHide) {
+                contentToHide.setAttribute("hidden", "");
+              }
+            });
+      
+            // If the clicked accordion was not expanded, expand it
+            if (!isExpanded) {
+              button.setAttribute("aria-expanded", "true");
+              content.removeAttribute("hidden");
+            }
+          });
+        });
+      });   </script>
+</body>
+</html>

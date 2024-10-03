@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Cursor que4</title>
+  <style>
+    body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.container {
+    text-align: center;
+}
+
+#custom-cursor {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(0, 150, 255, 0.8);
+    border-radius: 50%;
+    pointer-events: none; /* Prevents the custom cursor from blocking interactions */
+    transform: translate(-50%, -50%); /* Center the cursor */
+    transition: background-color 0.3s;
+}
+
+#custom-cursor:hover {
+    background-color: rgba(0, 255, 150, 0.8);
+}
+
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Custom Cursor Example</h1>
+        <p>Hover around to see the custom cursor!</p>
+    </div>
+    <div id="custom-cursor"></div>
+    <script>
+        const customCursor = document.getElementById('custom-cursor');
+
+// Update cursor position based on mouse movement
+document.addEventListener('mousemove', (event) => {
+    customCursor.style.left = `${event.pageX}px`;
+    customCursor.style.top = `${event.pageY}px`;
+});
+
+// Change cursor color on mouse hover over the container
+const container = document.querySelector('.container');
+container.addEventListener('mouseenter', () => {
+    customCursor.style.backgroundColor = 'rgba(255, 0, 150, 0.8)';
+});
+
+container.addEventListener('mouseleave', () => {
+    customCursor.style.backgroundColor = 'rgba(0, 150, 255, 0.8)';
+});
+
+    </script>
+</body>
+</html>

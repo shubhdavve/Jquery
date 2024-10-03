@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ending Countdown que3</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffcccc, #ff6666);
+            margin: 0;
+            text-align: center;
+        }
+        h1 {
+            font-size: 4em;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.274);
+            transition: transform 0.3s;
+        }
+        h1:hover {
+            transform: scale(1.05);
+        }
+        #countdown {
+            font-size: 3em;
+            color: #fff;
+            background-color: rgba(12, 7, 7, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            #countdown {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>SALE ENDS SOON!!</h1>
+    <div id="countdown"></div>
+
+    <script>// Set the date and time when the sale ends
+        const saleEndDate = new Date("2024-10-10T00:00:00").getTime();
+        
+        // Update the countdown every second
+        const countdownInterval = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = saleEndDate - now;
+        
+            // Calculate days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+            // Display the result in the countdown div
+            document.getElementById("countdown").innerHTML = 
+                ` ${hours}h ${minutes}m ${seconds}s`;
+        
+            // If the countdown is over, display a message
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("countdown").innerHTML = "SALE ENDED";
+            }
+        }, 1000);
+        </script>
+</body>
+</html>

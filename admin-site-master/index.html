@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="style.css">
+	<title>MICROTATA</title>
+</head>
+<body>
+	
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand"><i class='bx bxl-microsoft' style='color:#5f7cff'  ></i> TATA</a>
+		<ul class="side-menu">
+			<li><a href="#" class="active"><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
+			<li class="divider" data-text="main">Main</li>
+			<li>
+				<a href="#"><i class='bx bxs-inbox icon' ></i> Elements <i class='bx bx-chevron-right icon-right' ></i></a>
+				<ul class="side-dropdown">
+					<li><a href="#">Alert</a></li>
+					<li><a href="#">Badges</a></li>
+					<li><a href="#">Breadcrumbs</a></li>
+					<li><a href="#">Button</a></li>
+				</ul>
+			</li>
+			<li><a href="#"><i class='bx bxs-chart icon' ></i> Charts</a></li>
+			<li><a href="#"><i class='bx bxs-widget icon' ></i> Widgets</a></li>
+			<li class="divider" data-text="table and forms">Table and forms</li>
+			<li><a href="#"><i class='bx bx-table icon' ></i> Tables</a></li>
+			<li>
+				<a href="#"><i class='bx bxs-notepad icon' ></i> Forms <i class='bx bx-chevron-right icon-right' ></i></a>
+				<ul class="side-dropdown">
+					<li><a href="#">Basic</a></li>
+					<li><a href="#">Select</a></li>
+					<li><a href="#">Checkbox</a></li>
+					<li><a href="#">Radio</a></li>
+				</ul>
+			</li>
+		</ul>
+		
+	</section>
+	<!-- SIDEBAR -->
+
+	<!-- NAVBAR -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu toggle-sidebar' ></i>
+			<form action="#">
+				<div class="form-group">
+					<input type="text" placeholder="Search...">
+					<i class='bx bx-search icon' ></i>
+				</div>
+			</form>
+			<a href="#" class="nav-link">
+				<i class='bx bxs-bell icon' ></i>
+				<span class="badge">5</span>
+			</a>
+			<a href="#" class="nav-link">
+				<i class='bx bxs-message-square-dots icon' ></i>
+				<span class="badge">8</span>
+			</a>
+			<span class="divider"></span>
+			<div class="profile">
+				<img src="../images/OIG2.jpeg" alt="">
+				<ul class="profile-link">
+					<li><a href="#"><i class='bx bxs-user-circle icon' ></i> Profile</a></li>
+					<li><a href="#"><i class='bx bxs-cog' ></i> Settings</a></li>
+					<li><a href="#"><i class='bx bxs-log-out-circle' ></i> Logout</a></li>
+				</ul>
+			</div>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<h1 class="title">Dashboard</h1>
+			<ul class="breadcrumbs">
+				<li><a href="#">Home</a></li>
+				<li class="divider">/</li>
+				<li><a href="#" class="active">Dashboard</a></li>
+			</ul>
+			<div class="counter-container">
+				<div class="counter-card">
+					<div class="counter-head">
+						<h2 id="traffic-count">0</h2>
+						<p>Traffic</p>
+						<i class='bx bx-trending-up icon'></i>
+					</div>
+					<div class="progress-bar">
+						<div class="progress" id="traffic-progress"></div>
+					</div>
+					<span class="label" id="traffic-label">0%</span>
+				</div>
+			
+				<div class="counter-card">
+					<div class="counter-head">
+						<h2 id="sales-count">0</h2>
+						<p>Sales</p>
+						<i class='bx bx-trending-down icon down'></i>
+					</div>
+					<div class="progress-bar">
+						<div class="progress" id="sales-progress"></div>
+					</div>
+					<span class="label" id="sales-label">0%</span>
+				</div>
+			
+				<div class="counter-card">
+					<div class="counter-head">
+						<h2 id="pageviews-count">0</h2>
+						<p>Pageviews</p>
+						<i class='bx bx-trending-up icon'></i>
+					</div>
+					<div class="progress-bar">
+						<div class="progress" id="pageviews-progress"></div>
+					</div>
+					<span class="label" id="pageviews-label">0%</span>
+				</div>
+			
+				<div class="counter-card">
+					<div class="counter-head">
+						<h2 id="visitors-count">0</h2>
+						<p>Visitors</p>
+						<i class='bx bx-trending-up icon'></i>
+					</div>
+					<div class="progress-bar">
+						<div class="progress" id="visitors-progress"></div>
+					</div>
+					<span class="label" id="visitors-label">0%</span>
+				</div>
+			</div>
+			
+			<div class="data">
+				<div class="content-data">
+					<div class="head">
+						<h3>Sales Report</h3>
+						<div class="menu">
+							<i class='bx bx-dots-horizontal-rounded icon'></i>
+							<ul class="menu-link">
+								<li><a href="#">Edit</a></li>
+								<li><a href="#">Save</a></li>
+								<li><a href="#">Remove</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="chart">
+						<div id="chart"></div>
+					</div>
+				</div>
+				<div class="content-data">
+					<div class="head">
+						<h3>MAP LOCATION</h3>
+						<div class="menu">
+							<i class='bx bx-dots-horizontal-rounded icon'></i>
+							<ul class="menu-link">
+								<li><a href="#">Edit</a></li>
+								<li><a href="#">Save</a></li>
+								<li><a href="#">Remove</a></li>
+							</ul>
+						</div>
+					</div>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.5216725217915!2d72.50131167477193!3d23.077991614258835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9d384635d2a3%3A0x908a0935ddef1fd3!2sThe%20Capital%202!5e0!3m2!1sen!2sin!4v1727847163653!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				</div>
+			</div>
+<div class="cal">
+	
+</div>
+			<div class="calendar-container">
+				<div class="calendar-header">
+					<button id="prev">&lt;</button>
+					<h2 id="month-year"></h2>
+					<button id="next">&gt;</button>
+				</div>
+				<div class="day-names">
+					<div>Sun</div>
+					<div>Mon</div>
+					<div>Tue</div>
+					<div>Wed</div>
+					<div>Thu</div>
+					<div>Fri</div>
+					<div>Sat</div>
+				</div>
+				<div id="calendar-days" class="days"></div>
+			</div>
+			
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- NAVBAR -->
+
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+	<script src="script.js"></script>
+</body>
+</html>

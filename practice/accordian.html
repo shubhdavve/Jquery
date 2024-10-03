@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	width: 80%;
+	margin-inline: auto;
+}
+
+:root {
+	--hue: 223;
+	--border-r: 0.5em;
+	--bg: hsl(var(--hue), 10%, 90%);
+	--fg: hsl(var(--hue), 10%, 20%);
+	--primary: hsl(var(--hue), 90%, 70%);
+	--md: hsl(var(--hue), 10%, 80%);
+	--trans-dur: 0.3s;
+	--focus: hsl(var(--hue), 90%, 50%, 1);
+	font-size: calc(16px + (20 - 16) * (100vw - 320px) / (1280 - 320));
+}
+
+body {
+	background-color: var(--bg);
+	color: var(--fg);
+	height: 100vh;
+	transition: background-color var(--trans-dur), color var(--trans-dur),
+		stroke var(--trans-dur);
+
+	&.dark-mode {
+		--bg: hsl(var(--hue), 10%, 20%);
+		--fg: hsl(var(--hue), 10%, 90%);
+		--md: hsl(var(--hue), 10%, 10%);
+		--primary: hsl(var(--hue), 90%, 55%);
+		--focus: hsl(var(--hue), 90%, 100%, 0.5);
+	}
+}
+
+/* // Use this if you don't want/can't add a light/dark toggle
+// It hooks into the users own settings
+// @media (prefers-color-scheme: dark) {
+// 	:root {
+// 		--bg: hsl(var(--hue), 10%, 20%);
+// 		--fg: hsl(var(--hue), 10%, 90%);
+// 		--md: hsl(var(--hue), 10%, 10%);
+// 		--primary: hsl(var(--hue), 90%, 55%);
+// 	}
+// } */
+
+button {
+	appearance: none;
+}
+
+ Base styling above
+
+ Style the theme toggle
+.theme-toggle{
+	position: relative;
+	width: 55px;
+	height: 30px;
+	background-color: var(--md);
+	border-radius: 100px;
+	display: flex;
+	justify-content: flex-start;
+	transition: box-shadow var(--trans-dur) ease-in-out;
+	overflow: hidden;
+	cursor: pointer;
+	margin: 30px auto;
+}
+
+	.sun-moon {
+		width: 23px;
+		height: 23px;
+		border-radius: 100px;
+		background-color: white;
+		transform: translate(4px, 3px);
+		transition: transform 0.3s ease-in-out;
+
+		&::after,
+		.eclipse {
+			position: absolute;
+			content: '';
+			width: 23px;
+			height: 23px;
+			border-radius: 100px;
+			background-color: var(--primary);
+			position: absolute;
+			top: 0;
+			left: 90px;
+			z-index: 1;
+		}
+
+		.eclipse {
+			background-color: var(--md);
+			z-index: 2;
+			transform: translateX(23px);
+			transition-property: transform;
+			transition-duration: 0.25s;
+		}
+	}
+
+	&.enabled {
+		.sun-moon {
+			transform: translate(-61px, 3px);
+
+			.eclipse {
+				transition-property: transform;
+				transition-duration: 0.5s;
+				transition-delay: 0.5s;
+				transform: translateX(13px);
+			}
+		}
+	}
+
+	&:hover,
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 0 3px var(--primary);
+	}
+
+
+
+button.accordion__button {
+	background-color: var(--primary);
+	color: var(--fg);
+	font-size: 1em;
+	line-height: 1.3;
+	padding: 1em;
+	border-radius: var(--border-r);
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	transition: all var(--trans-dur) ease-in-out;
+	text-align: left;
+
+	.chevron {
+		display: block;
+		width: 30px;
+		height: 30px;
+		flex-shrink: 0;
+		margin-left: 20px;
+
+		&__container {
+			transform: translateY(13px);
+			transition: var(--trans-dur) ease-in-out;
+		}
+
+		&__line {
+			stroke: var(--fg);
+			stroke-width: 6px;
+			stroke-linecap: round;
+			transform-origin: 50px 50px;
+			transition: var(--trans-dur) ease-in-out;
+
+			&--1 {
+				transform: rotate(40deg);
+			}
+
+			&--2 {
+				transform: rotate(-40deg);
+			}
+		}
+	}
+
+	&.active {
+		border-radius: var(--border-r) var(--border-r) 0 0;
+
+		.chevron {
+			&__container {
+				transform: translateY(0);
+			}
+
+			&__line {
+				&--1 {
+					transform: rotate(0deg) scaleX(70%);
+				}
+
+				&--2 {
+					transform: rotate(0deg) scaleX(70%);
+				}
+			}
+		}
+	}
+
+	+ * + * {
+		margin-top: 30px;
+	}
+
+	&:hover,
+	&:focus {
+		outline: none;
+		box-shadow: inset 0 0 0 3px var(--focus);
+	}
+}
+
+
+.accordion__content {
+	background-color: var(--md);
+	transition: height var(--trans-dur) ease-in-out;
+	overflow: hidden;
+	border-radius: 0 0 var(--border-r) var(--border-r);
+
+	.inner-liner {
+		padding: 30px;
+	}
+
+	&:not(.active) {
+		display: none;
+	}
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="theme-toggle running" aria-label="Toggle light/dark theme.">
+            <div class="sun-moon">
+                <div class="eclipse"></div>
+            </div>
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="accordion">
+            <button class="accordion__button">
+                <span>
+                    Open Content Section One
+                </span>
+                <svg class="chevron" width="100" height="100" version="1.1" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid">
+                    <g class="chevron__container">
+                        <line class="chevron__line chevron__line--1" x1="10" y1="50" x2="50" y2="50" />
+                        <line class="chevron__line chevron__line--2" x1="90" y1="50" x2="50" y2="50" />
+                    </g>
+                </svg>
+            </button>
+            <div class="accordion__content">
+                <div class="inner-liner">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, omnis rem? Ullam laudantium temporibus sapiente in doloremque saepe sed earum, impedit consequatur distinctio delectus praesentium recusandae beatae magni, id libero.
+                </div>
+            </div>
+            <button class="accordion__button">
+                <span>
+                   Toggle The Next Section
+                </span>
+                <svg class="chevron" width="100" height="100" version="1.1" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid">
+                    <g class="chevron__container">
+                        <line class="chevron__line chevron__line--1" x1="10" y1="50" x2="50" y2="50" />
+                        <line class="chevron__line chevron__line--2" x1="90" y1="50" x2="50" y2="50" />
+                    </g>
+                </svg>
+            </button>
+            <div class="accordion__content">
+                <div class="inner-liner">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt ipsam perspiciatis illum exercitationem consequuntur dolores nemo velit reiciendis aperiam accusamus unde perferendis, eius molestias asperiores amet ad corporis repellat excepturi possimus. Aperiam, impedit!
+                </div>
+            </div>
+            <button class="accordion__button">
+                <span>
+                    Sometimes you might have a lot of text inside an accordion trigger so make sure the arrow on the left has enough room to breath and isn't getting shrunk
+                </span>
+                <svg class="chevron" width="100" height="100" version="1.1" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid">
+                    <g class="chevron__container">
+                        <line class="chevron__line chevron__line--1" x1="10" y1="50" x2="50" y2="50" />
+                        <line class="chevron__line chevron__line--2" x1="90" y1="50" x2="50" y2="50" />
+                    </g>
+                </svg>
+            </button>
+            <div class="accordion__content">
+                <div class="inner-liner">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt ipsam perspiciatis illum exercitationem consequuntur dolores nemo velit reiciendis aperiam accusamus unde perferendis, eius molestias asperiores amet ad corporis repellat excepturi possimus. Aperiam, impedit!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Light/Dark toggle
+let darkMode = localStorage.getItem('darkMode');
+const darkModeToggle = document.querySelector('.theme-toggle');
+
+const enableDarkMode = () => {
+	document.body.classList.add('dark-mode');
+	localStorage.setItem('darkMode', 'enabled');
+};
+
+const disableDarkMode = () => {
+	document.body.classList.remove('dark-mode');
+	localStorage.setItem('darkMode', null);
+};
+
+if (darkMode === 'enabled') {
+	enableDarkMode();
+	darkModeToggle.classList.add('enabled');
+}
+
+darkModeToggle.addEventListener('click', () => {
+	darkMode = localStorage.getItem('darkMode');
+	darkModeToggle.classList.toggle('enabled');
+	if (darkMode !== 'enabled') {
+		enableDarkMode();
+	} else {
+		disableDarkMode();
+	}
+});
+
+// Grab the toggle trigger and the sub UL
+const dataTriggers = document.querySelectorAll('.accordion__button');
+const dataTargets = document.querySelectorAll('.accordion__content');
+
+// Add a data attribute and count up
+dataTriggers.forEach((dataTrigger, index) => {
+	dataTrigger.setAttribute('data-trigger', `toggle-${index + 1}`);
+
+	// Drop in some accessible standards
+	dataTrigger.setAttribute('aria-controls', `toggle-${index + 1}`);
+
+	dataTrigger.addEventListener('click', function () {
+		this.classList.toggle('active');
+
+		dataTrigger.setAttribute(
+			'aria-expanded',
+			`${!(dataTrigger.getAttribute('aria-expanded') === 'true')}`
+		);
+	});
+});
+
+// Add an ID to each continuer that will slide
+dataTargets.forEach((dataTarget, index) => {
+	dataTarget.setAttribute('id', `toggle-${index + 1}`);
+});
+
+for (i = 0; i < dataTriggers.length; i++) {
+	dataTriggers[i].addEventListener('click', function () {
+		var container = document.getElementById(this.dataset.trigger);
+
+		if (!container.classList.contains('active')) {
+			container.classList.add('active');
+			container.style.height = 'auto';
+
+			var height = container.clientHeight + 'px';
+
+			container.style.height = '0px';
+
+			setTimeout(function () {
+				container.style.height = height;
+			}, 0);
+		} else {
+			container.style.height = '0px';
+
+			container.addEventListener(
+				'transitionend',
+				function () {
+					container.classList.remove('active');
+				},
+				{
+					once: true,
+				}
+			);
+		}
+	});
+}
+
+    </script>
+</body>
+</html>

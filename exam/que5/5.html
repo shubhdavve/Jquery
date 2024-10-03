@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Banner que5</title>
+   <style>
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    background: linear-gradient(to right, #d40404, #ffd0d0);
+    position: relative;
+    overflow: hidden;
+}
+
+#headline {
+    font-size: 3rem;
+    color: white;
+    animation: fadeMove 5s infinite ease-in-out;
+}
+
+.main{
+    color: red;
+    padding-top: 3%;
+    width: 90%;
+
+    margin: auto;
+}
+
+@keyframes fadeMove {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    
+}
+
+   </style>
+</head>
+<body>
+
+    <div class="banner">
+        <h1 id="headline">WELCOME TO RED AND WHITE EXAM!!</h1>
+    </div>
+    <div class="main">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas similique ad repellat voluptatem nemo, dolorem illo alias. Veniam repellendus, ea fuga labore adipisci ratione fugiat sint, libero perferendis quidem facilis totam unde quaerat. Quae beatae commodi quasi aspernatur perspiciatis cumque dolores nemo omnis similique temporibus repellendus dolor ipsa nulla, ab, consequatur reiciendis et numquam deserunt autem. Omnis ducimus animi iure corporis cum perspiciatis maiores quas quidem sit, similique iste sunt fugiat magnam. Ratione, ullam consequuntur minima expedita itaque natus earum porro nulla iusto atque facilis, molestiae, magni repellendus reprehenderit! Eum labore consequatur eligendi hic doloremque voluptate excepturi nostrum explicabo quia voluptatum animi rerum vitae perferendis ullam nemo a nesciunt reprehenderit quasi, facere porro praesentium sapiente et asperiores. Qui labore accusantium dolorum excepturi sed. Vitae ipsam corporis voluptatibus perspiciatis tempore doloremque repudiandae est amet at maiores blanditiis in incidunt necessitatibus explicabo modi architecto accusantium alias esse quas, consequatur nesciunt? Ea accusantium quidem repudiandae ratione fugiat, nisi ut voluptatem quae error earum sit molestias possimus pariatur impedit voluptate temporibus atque repellendus perferendis aliquam. Laborum placeat ex sed minima aperiam! Enim cumque exercitationem reprehenderit, officia hic unde sunt atque ratione explicabo numquam? Magnam aspernatur, dolores odio libero culpa corrupti cumque consequuntur est quibusdam!</div>
+
+    <script>
+        window.addEventListener('load', () => {
+    const headline = document.getElementById('headline');
+    headline.style.opacity = '1'; // Fade in
+    headline.style.transform = 'translateY(0)'; // Move into position
+});
+
+    </script>
+</body>
+</html>

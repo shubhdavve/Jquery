@@ -1,0 +1,191 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  .navbar {
+      position: fixed;
+      height: 80px;
+      overflow: hidden;
+      top: 0;
+      display: flex;
+      align-items: center;
+      background: #f1f1f1;
+      width: 100%;
+      z-index: 1;
+      box-shadow: 5px 0 5px #000;
+  }
+  
+  .navbar img.logo {
+      margin-left: 20px;
+      height: 60px;
+  }
+  .nav-clear {
+      height: 80px;
+  }
+  
+  
+  .menu{
+    position: absolute;
+    right: 20px;
+  }
+  .menu a{
+    color: #333;
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: 20px;
+    transition: color 0.3s;
+    text-transform: uppercase;
+  }
+  .menu a:hover{
+    color: #005b82;
+    transition: 0.3s; 
+  }
+  
+  
+  .btn{
+    display: none;
+    position: absolute;
+    right: 20px;
+  }
+  .btn:hover > span{
+    background: #6ab04c;
+  }
+  .btn span{
+    display: block;
+    margin: 6px;
+    width: 40px;
+    height: 3px;
+    background: #333;
+  }
+  
+  
+  @media only screen and (max-width : 600px) {
+  
+      .navbar {
+          overflow: visible;
+      }
+  
+      .menu {
+          width: 100%;
+          right: 0;
+          top: 80px;
+          background: #f1f1f1;
+          overflow: hidden;
+          max-height: 0;
+          transition: 3s;
+      }
+      .menu a {
+          background: #ddd;
+          display: block;
+          text-align: left;
+          padding: 15px 0 15px 25px;
+          margin: 0;
+      }
+      .menu a.a { border-left: 2px solid violet; }
+      .menu a.b { border-left: 2px solid blue }
+      .menu a.c { border-left: 2px solid skyblue }
+      .menu a.d { border-left: 2px solid green }
+      .menu a.e { border-left: 2px solid yellow }
+      .menu a.f { border-left: 2px solid orange }
+      .menu a.g { border-left: 2px solid red }
+      .menu a:hover { color: #fff; }
+      .menu a.a:hover { background: violet; }
+      .menu a.b:hover { background: blue; }
+      .menu a.c:hover { background: skyblue }
+      .menu a.d:hover { background: green; }
+      .menu a.e:hover { background: yellow; }
+      .menu a.f:hover { background: orange; }
+      .menu a.g:hover { background: red; }
+  
+      .btn {
+          display: block;
+          cursor: pointer;
+      }
+      .show{
+       max-height: 500px;
+      }
+  }
+
+
+
+
+
+
+
+
+  html,
+body {
+  height: 100% 
+  
+}
+
+body {
+  background-color: #2980b9;
+  font-family: monaco, Consolas, Lucida Console, monospace;
+}
+
+#sidebar {
+  width: 200px;
+  background: #2c3e50;
+  position: absolute;
+  height: 100%;
+  top: 100px;
+  left: -200px;
+  transition: left 0.5s ease;
+
+}
+
+#sidebar.visible {
+  left: 0px;
+  transition: left 0.7s ease;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  padding: 10px 0 10px 10px;
+  background: #46637F;
+  border-bottom: 1px solid #233140;
+}
+
+li a {
+  text-decoration: none;
+  color: white;
+}
+
+#sidebar-btn {
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 15px;
+  cursor: pointer;
+  margin: 20px;
+  position: absolute;
+  right: -60px;
+  top: 0px;
+}
+
+#sidebar-btn span {
+  background-color: white;
+  height: 1px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+#sidebar-btn span:nth-child(2) {
+  width: 75%;
+}
+
+.love {
+  width: 100%;
+  height: 100%;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
