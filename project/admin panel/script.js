@@ -278,3 +278,61 @@ document.getElementById("next").addEventListener("click", () => {
 
 // Initial render
 renderCalendar();
+
+
+
+
+var options = {
+	chart: {
+	  width: "100%",
+	  height: 380,
+	  type: "bar"
+	},
+	plotOptions: {
+	  bar: {
+		horizontal: true
+	  }
+	},
+	dataLabels: {
+	  enabled: false
+	},
+	stroke: {
+	  width: 1,
+	  colors: ["#fff"]
+	},
+	series: [
+	  {
+		data: [44, 55, 41, 64, 22, 43, 21]
+	  }
+	],
+	xaxis: {
+	  categories: [
+		"Korea",
+		"Canada",
+		"Poland",
+		"Italy",
+		"France",
+		"Japan",
+		"China"
+	  ]
+	},
+	tooltip: {
+	  custom: function({ series, seriesIndex, dataPointIndex, w }) {
+		return (
+		  '<div class="arrow_box">' +
+		  "<span>" +
+		  w.globals.labels[dataPointIndex] +
+		  ": " +
+		  series[seriesIndex][dataPointIndex] +
+		  "</span>" +
+		  "</div>"
+		);
+	  }
+	}
+  };
+  
+  var chart = new ApexCharts(document.querySelector("#apex-chart"), options);
+  
+  chart.render();
+  
+ 

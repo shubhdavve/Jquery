@@ -14,10 +14,10 @@
 	--dark: #000;
 	--green: #81D43A;
 	--light-green: #E3FFCB;
-	--blue: #1775F1;
+	--blue: #8d0000;
 	--light-blue: #D0E4FF;
-	--dark-blue: #0C5FCD;
-	--red: #FC3B56;
+	--dark-blue: #cd960c;
+	--red: #801173;
 }
 
 html {
@@ -438,6 +438,7 @@ main .content-data .chart {
 	max-width: 100%;
 	overflow-x: auto;
 	scrollbar-width: none;
+	
 }
 main .content-data .chart::-webkit-scrollbar {
 	display: none;
@@ -505,7 +506,8 @@ main .btn-send:hover {
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 50%;
+    width: 100%;
+	margin-top: 3%;
 }
 
 .calendar-header {
@@ -554,6 +556,67 @@ button:hover {
 
 .day:hover {
     background: #e8f5e9;
+}
+
+
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+#chart {
+  max-width: 1000px;
+  margin: 35px auto;
+  opacity: 0.9;
+  background-color: white;
+  border-radius:20px ;
+}
+
+.arrow_box {
+  position: relative;
+  background: #555;
+  border: 2px solid #000000;
+}
+.arrow_box:after, .arrow_box:before {
+  right: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow_box:after {
+  border-color: rgba(85, 85, 85, 0);
+  border-right-color: #555;
+  border-width: 10px;
+  margin-top: -10px;
+}
+.arrow_box:before {
+  border-color: rgba(0, 0, 0, 0);
+  border-right-color: #000000;
+  border-width: 13px;
+  margin-top: -13px;
+}
+
+#chart .apexcharts-tooltip {
+  color: #fff;
+  transform: translateX(10px) translateY(10px);
+  overflow: visible !important;
+  white-space: normal !important;
+}
+
+#chart .apexcharts-tooltip span {
+  padding: 5px 10px;
+  display: inline-block;
 }
 
 
